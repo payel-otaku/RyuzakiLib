@@ -4,7 +4,7 @@ from RyuzakiLib.api.reqs import async_search
 
 
 class AkenoAI:
-    def __init__(self, base_api_dev: str = "https://akeno.randydev.my.id"):
+    def __init__(self, base_api_dev: str = "https://xyz69-ryuzaki-api.hf.space"):
         self.base_api_dev = base_api_dev
         self.connected = False
         self.api_key = None
@@ -32,34 +32,26 @@ class AkenoAI:
             return None
 
     async def hentai(self, query: str):
-        if not self.connected or not self.api_key:
-            return "Not connected or API key missing"
         response = await async_search(
-            f"{self.base_api_dev}/akeno/hentai?query={query}&api_key={self.api_key}",
+            f"{self.base_api_dev}/akeno/hentai?query={query}",
             re_json=True
         )
         return response
 
     async def pornopics(self, query: str):
-        if not self.connected or not self.api_key:
-            return "Not connected or API key missing"
         response = await async_search(
-            f"{self.base_api_dev}/akeno/pornpics?query={query}&api_key={self.api_key}",
+            f"{self.base_api_dev}/akeno/pornpics?query={query}",
             re_json=True
         )
         return response
 
     async def x_search(self, query: str):
-        if not self.connected or not self.api_key:
-            return "Not connected or API key missing"
-        url = f"{self.base_api_dev}/akeno/xnxxsearch-v2?query={query}&api_key={self.api_key}"
+        url = f"{self.base_api_dev}/akeno/xnxxsearch?query={query}"
         response = await async_search(url, re_json=True)
         return response
 
     async def x_download(self, url: str):
-        if not self.connected or not self.api_key:
-            return "Not connected or API key missing"
-        url_ = f"{self.base_api_dev}/akeno/xnxx-dl-v2?link={url}&api_key={self.api_key}"
+        url_ = f"{self.base_api_dev}/akeno/xnxx-dl?link={url}"
         response = await async_search(url_, re_json=True)
         return response
 
