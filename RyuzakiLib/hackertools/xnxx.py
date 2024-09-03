@@ -1,14 +1,13 @@
 import wget
-
 from RyuzakiLib.api.reqs import async_search
 
 
 class PornoHub:
-    def __init__(self, token=None, base_api_dev: str = "https://xyz69-ryuzaki-api.hf.space"):
+    def __init__(self, base_api_dev: str = "https://xyz69-ryuzaki-api.hf.space"):
         self.base_api_dev = base_api_dev
 
-    async def x_search(self, query=None, quality="720p"):
-        url = f"{self.base_api_dev}/akeno/xnxxsearch?query={query}&quality={quality}"
+    async def x_search(self, query=None, quality="720p", results=15):
+        url = f"{self.base_api_dev}/akeno/xnxxsearch?query={query}&quality={quality}&results={results}"
         res = await async_search(url, re_json=True)
         results = res["randydev"]["results"]
         y = res["randydev"]["results"][0]
