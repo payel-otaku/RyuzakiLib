@@ -24,7 +24,7 @@ class PornoHub:
             title = response["randydev"]["results"].get("title", "Powered by Randydev")
             return file_path, thumb, title
         else:
-            schub = await self.x_search(query=query)
+            schub = await self.x_search(query=query, results=3)
             url_dl = f"{self.base_api_dev}/akeno/xnxx-dl?link={schub[0]}"
             response = await async_search(url_dl, re_json=True)
             file_path = wget.download(response["randydev"]["results"]["link"])
