@@ -28,8 +28,6 @@ from gpytranslate import SyncTranslator
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-aiosession = ClientSession()
-
 
 class Carbon:
     @staticmethod
@@ -68,6 +66,7 @@ class Carbon:
                 return f"Error: {e}"
         else:
             url = "https://carbonara.solopov.dev/api/cook"
+            aiosession = ClientSession()
             async with aiosession.post(url, json={"code": code}) as resp:
                 image = BytesIO(await resp.read())
             image.name = "carbon.png"
